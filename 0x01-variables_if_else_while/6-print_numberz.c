@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char a = 48;
+	int a = 48;
 
 	while (a <= 57)
 	{
