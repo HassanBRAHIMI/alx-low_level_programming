@@ -1,7 +1,7 @@
 /**
  * cap_string - capitalizes the words
  * @s: string
- * Return: the adrees that contains s
+ * Return: the adrees of s
  */
 char *cap_string(char *s)
 {
