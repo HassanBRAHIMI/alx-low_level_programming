@@ -15,7 +15,7 @@ char *create_array(unsigned int size, char c)
 		return (NULL);
 
 	fresh = (char *)malloc(size);
-	if (fresh = NULL)
+	if (fresh == NULL)
 		return (NULL);
 	for (i = 0; i < size; i++)
 		fresh[i] = c;
