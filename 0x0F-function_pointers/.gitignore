@@ -1,4 +1,4 @@
 a.out
 p.sh
 main.c
-putchar.c
+_putchar.c
