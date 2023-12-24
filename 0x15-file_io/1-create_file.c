@@ -10,7 +10,7 @@ int create_file(const char *filename, char *text_content)
 {
 	int o, w, content_len;
 
-	if (!text_content)
+	if (!text_content || !filename)
 		return (-1);
 	o = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (o < 0)
