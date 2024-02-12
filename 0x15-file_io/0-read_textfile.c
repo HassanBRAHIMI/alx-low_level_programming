@@ -18,13 +18,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (!buff)
 		return (0);
 	opened = open(filename, O_RDONLY);
-	if (opened <= 0)
+	if (opened < 0)
 	{
 		free(buff);
 		return (0);
 	}
 	r = read(opened, buff, letters);
-	if (r < 0)
+	if (r <= 0)
 	{
 		free(buff);
 		return (0);
