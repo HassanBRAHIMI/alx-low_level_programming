@@ -12,30 +12,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t opened, readed, written;
 	char *buff;
 
-	if (!filename || !letters)
+	if (!filename || letters <= 0)
 		return (0);
-
-	buff = malloc(letters * sizeof(char));
-	if (!buff)
-		return (0);
-
 	opened = open(filename, O_RDONLY);
 	if (opened == -1)
-	{
-		free(buff);
 		return (0);
-	}
-
+	buff = (char *)malloc(letters * sizeof(char));
+	if (!buff)
+		return (0);
 	readed = read(opened, buff, letters);
-	if (readed == -1)
-	{
-		free(buff);
-		close(opened);
-		return (0);
-	}
-
 	written = write(STDOUT_FILENO, buff, readed);
-	if (written == -1 || written != readed)
+	if (written == -1 ||readed == -1 || written != readed)
 	{
 		free(buff);
 		close(opened);
