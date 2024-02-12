@@ -9,7 +9,7 @@
 #include "main.h"
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t o, r, w;
+	ssize_t opened, r, w;
 	char *buff;
 
 	if (!filename)
@@ -17,13 +17,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buff = malloc(letters * sizeof(char));
 	if (!buff)
 		return (0);
-	o = open(filename, O_RDONLY);
-	if (o < 0)
+	opened = open(filename, O_RDONLY);
+	if (opened <= 0)
 	{
 		free(buff);
 		return (0);
 	}
-	r = read(o, buff, letters);
+	r = read(opened, buff, letters);
 	if (r < 0)
 	{
 		free(buff);
@@ -36,6 +36,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	free(buff);
-	close(o);
+	close(opened);
 	return (w);
 }
