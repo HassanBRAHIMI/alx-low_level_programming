@@ -9,25 +9,28 @@
 #include "main.h"
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t opened, readed, written;
-	char *buff;
+	ssize_t o, r, w;
+	char *buffer;
 
-	if (!filename)
+	if (filename == NULL)
 		return (0);
-	opened = open(filename, O_RDONLY);
-	if (opened == -1)
+
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
 		return (0);
-	buff = (char *)malloc(sizeof(char) * letters);
-	if (!buff)
-		return (0);
-	readed = read(opened, buff, letters);
-	written = write(STDOUT_FILENO, buff, readed);
-	if (written == -1 ||readed == -1 || written != readed)
+
+	o = open(filename, O_RDONLY);
+	r = read(o, buffer, letters);
+	w = write(STDOUT_FILENO, buffer, r);
+
+	if (o == -1 || r == -1 || w == -1 || w != r)
 	{
-		free(buff);
+		free(buffer);
 		return (0);
 	}
-	free(buff);
-	close(opened);
-	return (readed);
+
+	free(buffer);
+	close(o);
+
+	return (w);
 }
