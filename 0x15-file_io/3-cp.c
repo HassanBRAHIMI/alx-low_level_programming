@@ -2,8 +2,8 @@
  * main - entry point
  * @ac: arguments count
  * @av: arguments vector
- * 
- * Return: 97/98/99/100 in error 
+ *
+ *Return: 97/98/99/100 in error 
 */
 #include "main.h"
 int main(int ac, char **av)
@@ -33,7 +33,7 @@ int main(int ac, char **av)
         exit(98); 
     }
     readed_f_filefrom = 1024;
-    while(readed_f_filefrom == 1024)
+    while (readed_f_filefrom == 1024)
     {
         readed_f_filefrom = read(file_from_fd, buff, 1024);
         if (readed_f_filefrom == -1)
@@ -44,11 +44,10 @@ int main(int ac, char **av)
         written = write(file_to_fd, buff, readed_f_filefrom);
         if (written == -1)
         {
-            dprintf(STDERR_FILENO,"%s %s\n", "Error: Can't write to", file_to);
-            exit(99);
+        dprintf(STDERR_FILENO,"%s %s\n", "Error: Can't write to", file_to);
+        exit(99);
         }
     }
-        to = close(file_to_fd);
-        from = close(file_from_fd);
-        
+    to = close(file_to_fd);
+    from = close(file_from_fd);
 }
