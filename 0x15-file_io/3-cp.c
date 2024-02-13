@@ -15,7 +15,7 @@ int main(int ac, char **av)
 
     if (ac != 3)
     {
-        dprintf(2, "%s", "Usage: cp file_from file_to\n");
+        dprintf(STDERR_FILENO, "%s", "Usage: cp file_from file_to\n");
         exit (97);
     }
     file_from = av[1];
@@ -23,13 +23,13 @@ int main(int ac, char **av)
     file_to_fd = open(file_to, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
     if (file_to_fd == -1)
     {
-        dprintf(2, "%s %s\n", "Error: Can't write to file", file_to);
+        dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to file", file_to);
         exit(99);
     }
     file_from_fd = open(file_from, O_RDONLY);
     if (file_from_fd == -1)
     {
-        dprintf(2, "%s %s\n", "Error: Can't read from file", file_from);
+        dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", file_from);
         exit(98); 
     }
     readed_f_filefrom = 1024;
@@ -38,13 +38,13 @@ int main(int ac, char **av)
         readed_f_filefrom = read(file_from_fd, buff, 1024);
         if (readed_f_filefrom == -1)
         {
-            dprintf(2, "%s %s\n", "Error: Can't read from file", file_from);
+            dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", file_from);
             exit(98);
         }
         written = write(file_to_fd, buff, readed_f_filefrom);
         if (written == -1)
         {
-            dprintf(2,"%s %s\n", "Error: Can't write to", file_to);
+            dprintf(STDERR_FILENO,"%s %s\n", "Error: Can't write to", file_to);
             exit(99);
         }
     }
