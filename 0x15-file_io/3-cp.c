@@ -21,6 +21,11 @@ int main(int ac, char **av)
     file_from = av[1];
     file_to = av[2];
     file_to_fd = open(file_to, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+    if (file_to_fd == -1)
+    {
+        dprintf(2, "%s %s\n", "Error: Can't write to file", file_to);
+        exit(99);
+    }
     file_from_fd = open(file_from, O_RDONLY);
     if (file_from_fd == -1)
     {
