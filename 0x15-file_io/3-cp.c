@@ -42,7 +42,7 @@ int main(int ac, char **av)
             dprintf(2,"%s %s\n", "Error: Can't write to", file_to);
             exit(99);
         }
+    }
         to = close(file_to_fd);
         from = close(file_from_fd);
-    }
 }
