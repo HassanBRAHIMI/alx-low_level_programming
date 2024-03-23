@@ -8,7 +8,7 @@
 
 size_t dlistint_len(const dlistint_t *h)
 {
-    size_t n;
+size_t n;
 	dlistint_t *temp;
 
 	temp = (dlistint_t *)h;
