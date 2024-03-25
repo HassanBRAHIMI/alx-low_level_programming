@@ -47,6 +47,7 @@ int main(void)
     delete_dnodeint_at_index(&head, 0);
     printf("-----------------\n");
     delete_dnodeint_at_index(&head, 0);
+    printf("tada dhklsjhfjklhdjs\n");
     printf("-----------------\n");
     delete_dnodeint_at_index(&head, 0);
     printf("-----------------\n");
